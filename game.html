@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The guessing game</title>
+    <style>
+        body{
+            background-color:orange;
+            color: white;
+        }
+        div{
+            margin: 0 auto;
+            text-align: center;
+            width: 600px;
+        }
+        h1{
+            font-size: 50px;
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+    <h1>The Guessing Game </h1>
+    <button onclick="play()" > Play</button>
+    </div>
+
+    <script>
+        const min = 1, max = 5, previousGuess = [];
+        let secretNum = null, guessNum = null;
+
+        const play = function(){
+            secretNum = Math.floor(Math.random() * (max - min + 1) ) + min;
+            while(guessNumber() != secretNum ){
+                if(guessNum != 0){
+                    render();
+                }
+            }
+            alert("Congrats. The number was " +  secretNum +". Your previous guesses were " + previousGuess)
+        }
+        const guessNumber = function(){
+            guessNum = prompt("Enter a number between " + min + " and " + max);
+            return guessNum;
+        }
+        const render = function(){
+            previousGuess.push(guessNum);
+            if(guessNum > secretNum){
+                alert("Too high");
+            } else{
+                alert("Too Low");
+            }
+        }
+
+    </script>
+</body>
+</html>
